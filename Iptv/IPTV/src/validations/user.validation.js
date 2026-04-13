@@ -1,0 +1,21 @@
+import Joi from "joi";
+
+export const UserValidationSchema = {
+  // rules for user registration
+	register: Joi.object({
+    name: Joi.string().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).required(),
+  }),
+  // login validation rules
+  login: Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+  }),
+  // update validation rules
+  update: Joi.object({
+    name: Joi.string().min(3).max(30).optional(),
+    email: Joi.string().email().optional(),
+    password: Joi.string().min(8).optional(),
+  }),
+};
